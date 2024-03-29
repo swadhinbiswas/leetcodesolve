@@ -29,4 +29,5 @@ class Solution:
           
 nums = [1,1,2]
 
+test="art"
 
