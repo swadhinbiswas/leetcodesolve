@@ -1,0 +1,53 @@
+import sys
+from typing import List, Tuple
+
+def get_optimal_swaps(n: int, arr: List[int]) -> Tuple[int, List[Tuple[int, int]]]:
+    # Create position array to quickly find where each number is
+    pos = [0] * (n + 1)
+    for i in range(n):
+        pos[arr[i]] = i + 1  # 1-based indexing
+    
+    operations = []
+    total_cost = 0
+    
+    # For each position, put the correct number there
+    for i in range(1, n + 1):
+        if pos[i] != i:
+            # Find where the current number i is
+            curr_pos = pos[i]
+            
+            # Calculate cost for this swap
+            cost = i & curr_pos
+            total_cost += cost
+            
+            # Update positions after swap
+            num_at_i = arr[i - 1]
+            arr[curr_pos - 1], arr[i - 1] = arr[i - 1], arr[curr_pos - 1]
+            pos[i] = i
+            pos[num_at_i] = curr_pos
+            
+            # Record the swap operation
+            operations.append((i, curr_pos))
+    
+    return total_cost, operations
+
+def main():
+    # For faster input
+    input = sys.stdin.readline
+    
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        arr = list(map(int, input().split()))
+        
+        # Get minimum cost and operations
+        total_cost, operations = get_optimal_swaps(n, arr)
+        
+        # Output results
+        print(total_cost)
+        print(len(operations))
+        for i, j in operations:
+            print(i, j)
+
+if __name__ == "__main__":
+    main()
