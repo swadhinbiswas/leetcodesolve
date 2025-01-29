@@ -1,8 +1,8 @@
-import math
+
 
 class Solution(object):
     def maxSubarray(self,array):
-        max_sum = -math.inf
+        max_sum = -1
         for start in range(len(array)):
             arraysum=0
             for end in range(start,len(array)):
@@ -12,3 +12,8 @@ class Solution(object):
         return max_sum
 
 
+
+
+x=Solution().maxSubarray([3,-4,5,4,-1,12,-8])
+print(x)
+            
