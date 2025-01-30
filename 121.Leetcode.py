@@ -1,0 +1,2 @@
+class Solve:
+    def m
