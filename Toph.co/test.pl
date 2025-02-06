@@ -1,0 +1,1 @@
+for$i(1..<>){$s=0;for$n(1..<>){$s+=<>;$a=$s/$n}printf"Case %d: %.3f\n",$i,$a}
