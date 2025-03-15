@@ -19,6 +19,22 @@ class Sorting:
       array[i],array[small_element]=array[small_element],array[i]
     return array
 
+  def insertionsort(array:List[int])->List[int]:
+    for i in range(1,len(array)):
+      current=array[i]
+      previous=i-1
+      while previous>=0 and array[previous]>current:
+        array[previous+1]=array[previous]
+        previous-=1
+        array[previous+1]=current
+
+    return array
+
+
+
+
+
+
 
 
 
@@ -27,6 +43,8 @@ class Sorting:
 
 text=Sorting.bubbleshort([1,2,3,4,5])
 text2=Sorting.selectionssort([3,4,5,1,3,5,6,7,9])
+text3=Sorting.insertionsort([3,4,5,1,3,5,6,7,9])
 
 print(text)
 print(text2)
+print(text3)
